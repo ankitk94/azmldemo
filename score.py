@@ -8,7 +8,9 @@ def init():
 
 def run(input_df):
     import json
-    pred = model.predict(input_df)
+    inp = json.loads(input_df)["input_df"]
+    inp = pandas.DataFrame(inp)
+    pred = model.predict(inp)
     return json.dumps(str(pred[0]))
 
 def main():
